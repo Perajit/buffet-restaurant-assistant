@@ -4,7 +4,7 @@ import {
   addCouponPromotionData,
   deleteCouponPromotionData,
   updateCouponPromotionData
-} from '../../services/couponPromotion'
+} from '../../services/couponPromotions'
 
 const wrapper = (query, resultName, res) => {
   query

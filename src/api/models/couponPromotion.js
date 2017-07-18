@@ -1,7 +1,7 @@
 import mongoose, { Schema } from 'mongoose'
-import bluebird from 'bluebird'
+import Promise from 'bluebird'
 
-mongoose.Promise = bluebird;
+mongoose.Promise = Promise;
 
 const CouponPromotionSchema = new Schema({
   couponCode: { type: String, required: true, unique: true },

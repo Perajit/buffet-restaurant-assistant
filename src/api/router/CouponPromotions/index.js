@@ -6,7 +6,7 @@ import {
   updateCouponPromotion
 } from './controller'
 
-const route = (app) => {
+const router = (app) => {
   app.get('/api/couponPromotions', (...args) => {
     getAllCouponPromotions('couponPromotions', ...args)
   })
@@ -24,4 +24,4 @@ const route = (app) => {
   })
 }
 
-export default route
+export default router

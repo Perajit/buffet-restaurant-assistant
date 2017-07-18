@@ -1,7 +1,6 @@
-import CouponsRouter from './Coupons'
 
 const router = (app) => {
-  CouponsRouter(app)
+  CouponPromotionsRouter(app)
 }
 
 export default router
