@@ -1,3 +1,4 @@
-export App from './App/App'
-export Bill from './Bill/Index'
-export Promotions from './Promotions/Index'
+export App from './app/App'
+export BillPageContainer from './pages/BillPage/BillPageContainer'
+export PromotionsPageContainer from './pages/PromotionsPage/PromotionsPageContainer'
+export InputField from './common/InputField'

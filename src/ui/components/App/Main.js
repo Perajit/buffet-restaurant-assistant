@@ -1,14 +1,14 @@
 import React, { Component } from 'react'
 import { Route } from 'react-router-dom'
-import { Bill, Promotions } from '../'
+import { BillPageContainer, PromotionsPageContainer } from '../'
 
 class Main extends Component {
   render() {
     return (
       <div>
-        <Route exact path="/" component={Bill} />
-        <Route exact path="/bill" component={Bill} />
-        <Route exact path="/promotions" component={Promotions} />
+        <Route exact path="/" component={BillPageContainer} />
+        <Route exact path="/bill" component={BillPageContainer} />
+        <Route exact path="/promotions" component={PromotionsPageContainer} />
       </div>
     )
   }
