@@ -1,4 +1,8 @@
 import React, { Component } from 'react'
+import CouponPromotionListItem from './CouponPromotionListItem'
+import {
+  ListGroup
+} from 'react-bootstrap'
 
 class CouponPromotionList extends Component {
   render() {
@@ -9,10 +13,10 @@ class CouponPromotionList extends Component {
     } = this.props
 
     return (
-      <ul>
+      <ListGroup>
         {
           couponPromotions.map(couponPromotion => (
-            <CouponPromotion
+            <CouponPromotionListItem
               key={ couponPromotion.id }
               id={ couponPromotion.id }
               couponCode={ couponPromotion.couponCode }
@@ -20,28 +24,7 @@ class CouponPromotionList extends Component {
               onEdit={ onEditCouponPromotion } />
           ))
         }
-      </ul>
-    )
-  }
-}
-
-class CouponPromotion extends Component {
-  render() {
-    const {
-      id,
-      couponCode,
-      onDelete,
-      onEdit
-    } = this.props
-
-    return (
-      <li>
-        { couponCode }
-        <button
-            onClick={ e => onDelete(id) }>Remove</button>
-        <button
-            onClick={ e => onEdit(id) }>Edit</button>
-      </li>
+      </ListGroup>
     )
   }
 }

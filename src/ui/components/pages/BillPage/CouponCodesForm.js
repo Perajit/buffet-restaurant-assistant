@@ -1,4 +1,10 @@
 import React, { Component } from 'react'
+import CouponCodesFormList from './CouponCodesFormList'
+import {
+  FormGroup,
+  FormControl,
+  ControlLabel
+} from 'react-bootstrap'
 
 class CouponCodesForm extends Component {
   render() {
@@ -11,13 +17,13 @@ class CouponCodesForm extends Component {
 
     return (
       <div>
-        <div>
-          <label>Coupon Code</label>
-          <input
+        <FormGroup>
+          <ControlLabel>Coupon Code</ControlLabel>
+          <FormControl
               onKeyPress={ this.handleKeyPress } />
-        </div>
+        </FormGroup>
         <div>
-          <CouponCodeList
+          <CouponCodesFormList
               coupons={ coupons }
               onRemoveCouponCode={ onRemoveCouponCode }
               onIncreaseCouponCode={ onIncreaseCouponCode }
@@ -36,67 +42,6 @@ class CouponCodesForm extends Component {
 
       target.value = ''
     }
-  }
-}
-
-class CouponCodeList extends Component {
-  render() {
-    let {
-      coupons,
-      onRemoveCouponCode,
-      onIncreaseCouponCode,
-      onDecreaseCouponCode
-    } = this.props
-
-    return (
-      <ul>
-        {
-          coupons.map(appliedCoupon => (
-            <CouponCode
-                key={ appliedCoupon.couponCode }
-                couponCode={ appliedCoupon.couponCode }
-                total={ appliedCoupon.total }
-                onRemoveCouponCode={ onRemoveCouponCode }
-                onIncreaseCouponCode={ onIncreaseCouponCode }
-                onDecreaseCouponCode={ onDecreaseCouponCode } />
-          ))
-        }
-      </ul>
-    )
-  }
-}
-
-class CouponCode extends Component {
-  render() {
-    let { couponCode, total } = this.props
-
-    return (
-      <li>
-        { couponCode }
-        { total }
-        <button
-            onClick={ this.onClickIncrease }>+</button>
-        <button
-            onClick={ this.onClickDecrease }>-</button>
-        <button
-            onClick={ this.onClickRemove }>Remove</button>
-      </li>
-    )
-  }
-
-  onClickRemove = () => {
-    let { couponCode, onRemoveCouponCode } = this.props
-    onRemoveCouponCode(couponCode)
-  }
-
-  onClickIncrease = () => {
-    let { couponCode, onIncreaseCouponCode } = this.props
-    onIncreaseCouponCode(couponCode)
-  }
-
-  onClickDecrease = () => {
-    let { couponCode, onDecreaseCouponCode } = this.props
-    onDecreaseCouponCode(couponCode)
   }
 }
 

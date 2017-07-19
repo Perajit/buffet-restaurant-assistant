@@ -1,5 +1,8 @@
 import React, { Component } from 'react'
-import CouponPromotion from './CouponPromotion'
+import CouponPromotionPanel from './CouponPromotionPanel'
+import {
+  PageHeader
+} from 'react-bootstrap'
 
 class PromotionsPage extends Component {
   render() {
@@ -12,8 +15,9 @@ class PromotionsPage extends Component {
     } = this.props
 
     return (
-      <div>
-        <CouponPromotion
+      <div className="container">
+        <PageHeader>Promotions</PageHeader>
+        <CouponPromotionPanel
           couponPromotions={ couponPromotions }
           onReloadPromotions={ onReloadPromotions }
           onAddCouponPromotion={ onAddCouponPromotion }

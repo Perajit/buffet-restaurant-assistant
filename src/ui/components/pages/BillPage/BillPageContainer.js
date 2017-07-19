@@ -10,15 +10,16 @@ class BillPageContainer extends Component {
   
   render() {
     let { netBillAmount } = this.state
+    let { submitBillForm } = this
 
     return (
       <BillPage
           netBillAmount={ netBillAmount }
-          onSubmitForm={ this.handleSubmitBillForm } />
+          onSubmitForm={ this.submitBillForm } />
     )
   }
 
-  handleSubmitBillForm = (data) => {
+  submitBillForm = (data) => {
     const url = BILL_ENDPOINT
     let { totalCustomers, coupons } = data
 

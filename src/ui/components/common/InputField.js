@@ -1,4 +1,9 @@
 import React, { Component } from 'react'
+import {
+  FormGroup,
+  FormControl,
+  ControlLabel
+} from 'react-bootstrap'
 
 class InputField extends Component {
   state = {
@@ -10,14 +15,14 @@ class InputField extends Component {
     let { value } = this.state
 
     return (
-      <div>
-        <label>{ label }</label>
-        <input
+      <FormGroup>
+        <ControlLabel>{ label }</ControlLabel>
+        <FormControl
             type={ type }
             name={ name }
             value={ value }
             onChange={ this.handleChange } />
-      </div>
+      </FormGroup>
     )
   }
 

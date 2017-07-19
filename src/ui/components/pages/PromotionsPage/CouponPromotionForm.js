@@ -1,5 +1,8 @@
 import React, { Component } from 'react'
 import { InputField } from '../../'
+import {
+  Button
+} from 'react-bootstrap'
 
 class CouponPromotionForm extends Component {
   state = {
@@ -14,83 +17,72 @@ class CouponPromotionForm extends Component {
 
     return (
       <div>
+        <InputField
+            type="text"
+            name="couponCode"
+            label="Coupon Code"
+            value={ couponCode }
+            onChangeValue={ this.changeCouponCode } />
+        <InputField
+            type="number"
+            name="numberOfCustomers"
+            label="Required Number of Customers"
+            value={ numberOfCustomers }
+            onChangeValue={ this.changeNumberOfCustomers } />
+        <InputField
+            type="number"
+            name="pctDiscount"
+            label="Discount (%)"
+            value={ pctDiscount }
+            onChangeValue={ this.changePctDiscount } />
         <div>
-          <InputField
-              type="text"
-              name="couponCode"
-              label="Coupon Code"
-              value={ couponCode }
-              onChangeValue={ this.handleChangeCouponCode } />
-        </div>
-        <div>
-          <InputField
-              type="number"
-              name="numberOfCustomers"
-              label="Required Number of Customers"
-              value={ numberOfCustomers }
-              onChangeValue={ this.handleChangeNumberOfCustomers } />
-        </div>
-        <div>
-          <InputField
-              type="number"
-              name="pctDiscount"
-              label="Discount (%)"
-              value={ pctDiscount }
-              onChangeValue={ this.handleChangePctDiscount } />
-        </div>
-        <div>
-          <button
+          <Button
               disabled={ preventSubmit }
-              onClick={ this.handleSubmitForm }>Submit</button>
+              onClick={ this.submitForm }>Submit</Button>
         </div>
       </div>
     )
   }
 
   componentWillReceiveProps(nextProps) {
-    let { coupon } = nextProps
+    let { couponPromotion } = nextProps
     let couponCode = ''
     let numberOfCustomers = ''
     let pctDiscount = ''
 
-    if (coupon) {
-      couponCode = coupon.couponCode
-      numberOfCustomers = coupon.numberOfCustomers
-      pctDiscount = coupon.pctDiscount
+    if (couponPromotion) {
+      couponCode = couponPromotion.couponCode
+      numberOfCustomers = couponPromotion.numberOfCustomers
+      pctDiscount = couponPromotion.pctDiscount
     }
 
     this.setState({ couponCode, numberOfCustomers, pctDiscount })
   }
 
   validateForm() {
-    let { couponCode, numberOfCustomers } = this.state
+    let { couponCode, numberOfCustomers, pctDiscount } = this.state
 
-    return numberOfCustomers > 0 && couponCode.length > 0
+    return numberOfCustomers > 0 && couponCode.length > 0 && pctDiscount > 0
   }
 
-  handleChangeCouponCode = (couponCode) => {
+  changeCouponCode = (couponCode) => {
     this.setState({ couponCode })
   }
 
-  handleChangeNumberOfCustomers = (numberOfCustomers) => {
+  changeNumberOfCustomers = (numberOfCustomers) => {
     this.setState({ numberOfCustomers })
   }
 
-  handleChangePctDiscount = (pctDiscount) => {
+  changePctDiscount = (pctDiscount) => {
     this.setState({ pctDiscount })
   }
 
-  handleSubmitForm = (e) => {
-    if (!this.validateForm()) {
-      //TODO: Add error indicator
-      return
-    }
-
+  submitForm = (e) => {
     let data = Object.assign({}, this.state)
-    let { coupon } = this.props
+    let { couponPromotion } = this.props
     
-    if (coupon) {
-      data.id = coupon.id
+    if (couponPromotion) {
+      data.id = couponPromotion.id
     }
 
     this.props.onSubmit(data)
